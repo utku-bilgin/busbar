@@ -56,21 +56,18 @@ export default function App() {
     <div className="app">
       <header className="topbar">
         <div className="brand">
-          <span className="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 40 24" fill="none">
-              <rect x="1" y="4" width="38" height="16" rx="3" fill="#3b82f6" />
-              <rect x="1" y="4" width="38" height="16" rx="3" stroke="#1d4ed8" strokeWidth="1.2" />
-              <path d="M6 8h28M6 16h28" stroke="#dbeafe" strokeWidth="1.4" opacity=".8" />
-            </svg>
-          </span>
-          <div>
+          <a className="brand-logo" href="/" aria-label="IMG ana sayfa">
+            <img src="/img.png" alt="IMG" className="brand-logo-img" />
+          </a>
+          <span className="brand-divider" aria-hidden="true" />
+          <div className="brand-copy">
             <p className="brand-kicker">Busbar · Sıcak hadde</p>
             <h1>Bakır lama metraj hesaplayıcı</h1>
+            <p className="topbar-note">
+              Sipariş tonajından çekilmesi gereken sıcak hadde boyunu hesaplar.
+            </p>
           </div>
         </div>
-        <p className="topbar-note">
-          Sipariş tonajından çekilmesi gereken sıcak hadde boyunu hesaplar.
-        </p>
       </header>
 
       <div className="layout">
@@ -256,6 +253,7 @@ export default function App() {
       </div>
 
       <footer className="footer">
+        <img className="footer-logo" src="/img.png" alt="IMG" />
         <p>
           Yoğunluk 8,96 g/cm³. Kesit: A = w·t − (4 − π)·r². Metraj, boy verimi
           ve proses firesi ile brüt sıcak hadde boyuna çevrilir.
