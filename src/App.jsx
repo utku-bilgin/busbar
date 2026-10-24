@@ -7,18 +7,31 @@ import { calculateMetraj } from "./utils/calculations";
 import "./App.css";
 
 const INITIAL = {
-  tonaj: "0",
+  tonaj: "",
   boySecim: "2500_8000",
-  faydaliBoy: "0",
-  cekimBoyu: "0",
-  sogukW: "0",
-  sogukT: "0",
-  sogukR: "0",
-  sicakW: "0",
-  sicakT: "0",
-  sicakR: "0",
-  prosesFire: "0",
+  faydaliBoy: "",
+  cekimBoyu: "",
+  sogukW: "",
+  sogukT: "",
+  sogukR: "",
+  sicakW: "",
+  sicakT: "",
+  sicakR: "",
+  prosesFire: "",
 };
+
+const NUMERIC_KEYS = [
+  "tonaj",
+  "faydaliBoy",
+  "cekimBoyu",
+  "sogukW",
+  "sogukT",
+  "sogukR",
+  "sicakW",
+  "sicakT",
+  "sicakR",
+  "prosesFire",
+];
 
 function num(value) {
   const n = parseFloat(String(value).replace(",", "."));
@@ -51,13 +64,14 @@ export default function App() {
   );
 
   const selectedBoy = BOY_OPTIONS.find((o) => o.value === form.boySecim);
+  const hasInput = NUMERIC_KEYS.some((key) => form[key] !== "");
 
   return (
     <div className="app">
       <header className="topbar">
         <div className="brand">
           <a className="brand-logo" href="/" aria-label="IMG ana sayfa">
-            <img src="/img.png" alt="IMG" className="brand-logo-img" />
+            <img src="/img-logo.png" alt="IMG" className="brand-logo-img" />
           </a>
           <span className="brand-divider" aria-hidden="true" />
           <div className="brand-copy">
@@ -85,10 +99,9 @@ export default function App() {
               <Field id="tonaj" label="Sipariş miktarı (kg)" hint="Net soğuk hadde siparişi">
                 <input
                   id="tonaj"
-                  type="number"
-                  min="0"
-                  step="any"
+                  type="text"
                   inputMode="decimal"
+                  placeholder="Örn. 1500"
                   value={form.tonaj}
                   onChange={(e) => update("tonaj", e.target.value)}
                 />
@@ -114,9 +127,7 @@ export default function App() {
                 <Field id="faydaliBoy" label="Toplam net boy (mm)">
                   <input
                     id="faydaliBoy"
-                    type="number"
-                    min="0"
-                    step="any"
+                    type="text"
                     inputMode="decimal"
                     placeholder="Örn. 7500"
                     value={form.faydaliBoy}
@@ -126,9 +137,7 @@ export default function App() {
                 <Field id="cekimBoyu" label="Toplam çekim boyu (mm)">
                   <input
                     id="cekimBoyu"
-                    type="number"
-                    min="0"
-                    step="any"
+                    type="text"
                     inputMode="decimal"
                     placeholder="Örn. 8000"
                     value={form.cekimBoyu}
@@ -148,10 +157,9 @@ export default function App() {
               <Field id="sogukW" label="Genişlik w (mm)">
                 <input
                   id="sogukW"
-                  type="number"
-                  min="0"
-                  step="any"
+                  type="text"
                   inputMode="decimal"
+                  placeholder="Örn. 100"
                   value={form.sogukW}
                   onChange={(e) => update("sogukW", e.target.value)}
                 />
@@ -159,10 +167,9 @@ export default function App() {
               <Field id="sogukT" label="Kalınlık t (mm)">
                 <input
                   id="sogukT"
-                  type="number"
-                  min="0"
-                  step="any"
+                  type="text"
                   inputMode="decimal"
+                  placeholder="Örn. 10"
                   value={form.sogukT}
                   onChange={(e) => update("sogukT", e.target.value)}
                 />
@@ -170,10 +177,9 @@ export default function App() {
               <Field id="sogukR" label="Köşe radyüsü r (mm)">
                 <input
                   id="sogukR"
-                  type="number"
-                  min="0"
-                  step="any"
+                  type="text"
                   inputMode="decimal"
+                  placeholder="Örn. 2"
                   value={form.sogukR}
                   onChange={(e) => update("sogukR", e.target.value)}
                 />
@@ -190,10 +196,9 @@ export default function App() {
               <Field id="sicakW" label="Genişlik w (mm)">
                 <input
                   id="sicakW"
-                  type="number"
-                  min="0"
-                  step="any"
+                  type="text"
                   inputMode="decimal"
+                  placeholder="Örn. 120"
                   value={form.sicakW}
                   onChange={(e) => update("sicakW", e.target.value)}
                 />
@@ -201,10 +206,9 @@ export default function App() {
               <Field id="sicakT" label="Kalınlık t (mm)">
                 <input
                   id="sicakT"
-                  type="number"
-                  min="0"
-                  step="any"
+                  type="text"
                   inputMode="decimal"
+                  placeholder="Örn. 12"
                   value={form.sicakT}
                   onChange={(e) => update("sicakT", e.target.value)}
                 />
@@ -212,10 +216,9 @@ export default function App() {
               <Field id="sicakR" label="Köşe radyüsü r (mm)">
                 <input
                   id="sicakR"
-                  type="number"
-                  min="0"
-                  step="any"
+                  type="text"
                   inputMode="decimal"
+                  placeholder="Örn. 3"
                   value={form.sicakR}
                   onChange={(e) => update("sicakR", e.target.value)}
                 />
@@ -236,11 +239,9 @@ export default function App() {
               >
                 <input
                   id="prosesFire"
-                  type="number"
-                  min="0"
-                  max="99.9"
-                  step="0.1"
+                  type="text"
                   inputMode="decimal"
+                  placeholder="Örn. 5"
                   value={form.prosesFire}
                   onChange={(e) => update("prosesFire", e.target.value)}
                 />
@@ -249,11 +250,11 @@ export default function App() {
           </Section>
         </form>
 
-        <ResultsPanel result={result} />
+        <ResultsPanel result={hasInput ? result : null} />
       </div>
 
       <footer className="footer">
-        <img className="footer-logo" src="/img.png" alt="IMG" />
+        <img className="footer-logo" src="/img-logo.png" alt="IMG" />
         <p>
           Yoğunluk 8,96 g/cm³. Kesit: A = w·t − (4 − π)·r². Metraj, boy verimi
           ve proses firesi ile brüt sıcak hadde boyuna çevrilir.

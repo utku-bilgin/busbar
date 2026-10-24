@@ -21,11 +21,11 @@ export const BOY_OPTIONS = [
     cekimBoyu: 10200,
   },
   {
-    value: "4000_8500",
+    value: "4000_8800",
     label: "4000 mm",
-    detail: "8500 mm çekim · 2 boy · 500 mm fire",
+    detail: "8800 mm çekim · 2 boy · 800 mm fire",
     netBoy: 8000,
-    cekimBoyu: 8500,
+    cekimBoyu: 8800,
   },
   {
     value: "ozel",
