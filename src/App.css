@@ -426,11 +426,32 @@ select {
   }
 
   .brand {
+    flex-wrap: nowrap;
     align-items: flex-start;
+    gap: 12px;
+  }
+
+  .brand-logo {
+    margin-top: 2px;
+    height: 46px;
+    padding: 0 10px;
+    border-radius: 13px;
+  }
+
+  .brand-logo-img {
+    height: 28px;
+  }
+
+  .brand-copy {
+    flex: 1 1 0;
   }
 
   h1 {
-    font-size: 25px;
+    font-size: clamp(20px, 5.6vw, 25px);
+  }
+
+  .topbar-note {
+    font-size: 13px;
   }
 
   .panel,
