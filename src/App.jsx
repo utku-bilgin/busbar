@@ -110,13 +110,12 @@ export default function App() {
                 <select
                   id="boySecim"
                   value={form.boySecim}
+                  title={selectedBoy?.detail}
                   onChange={(e) => update("boySecim", e.target.value)}
                 >
                   {BOY_OPTIONS.map((opt) => (
                     <option key={opt.value} value={opt.value}>
-                      {opt.value === "ozel"
-                        ? opt.label
-                        : `${opt.label} (${opt.detail})`}
+                      {opt.label}
                     </option>
                   ))}
                 </select>
